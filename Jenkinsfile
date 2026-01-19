@@ -1,31 +1,26 @@
 pipeline {
     agent any
 
-triggers {
-         githubPush()
+    triggers {
+        githubPush()
     }
-    
+
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'main',
-                    url: 'https://github.com/sanketpatil48/aws-eks.git'
+                checkout scm
             }
         }
 
         stage('Build') {
             steps {
                 echo 'Building the project...'
-                // Example:
-                // sh 'mvn clean package'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                // Example:
-                // sh 'mvn test'
             }
         }
 
